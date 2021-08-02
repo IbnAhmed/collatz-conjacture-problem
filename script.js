@@ -15,16 +15,26 @@ const config = {
   data: data,
 };
 
-var c = document.getElementById("chart");
-c.height = 88;
-var ctx = c.getContext("2d");
+var ctx = document.getElementById("chart");
+if(window.innerWidth < 768){
+	ctx.height = 300;
+} else {
+	ctx.height = 88;
+}
+// var ctx = c.getContext("2d");
 var myChart = new Chart(ctx, config);
 
 let arr = [];
 document.getElementById('numberForm').addEventListener('submit', function(evt){
     evt.preventDefault();
-    arr = [];
     let number = document.getElementById('theNumber').value;
+    
+    findSequence(number);
+
+	// document.getElementById('numberForm').reset();
+})
+
+function findSequence(number){
     function lookup(number){
     	arr.push(number);
     	if(number <= 1){
@@ -36,6 +46,8 @@ document.getElementById('numberForm').addEventListener('submit', function(evt){
     		lookup((3*number)+1); 
     	}
     }
+
+    arr = [];
     if(Number(number) > 0){
     	lookup(Number(number))
 
@@ -56,6 +68,5 @@ document.getElementById('numberForm').addEventListener('submit', function(evt){
     } else {
     	alert('Input number must be greater than 0!')
     }
-	document.getElementById('numberForm').reset();
-    
-})
+}
+findSequence(21)
