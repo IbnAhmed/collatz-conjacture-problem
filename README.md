@@ -11,7 +11,7 @@ Even = n/2
 ## What I did?
 I built a program, which takes a integer number and return all the sequence by applying collactz conjacture. It also shows the visual represention of the sequences.
 
-## What I used for develpment?
+## What I used for development?
 - HTML
 - CSS
 - JS
